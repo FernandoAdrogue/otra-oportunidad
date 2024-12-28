@@ -16,6 +16,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { loginAction } from "@/actions/auth-actions";
 
 const FormLogin = () => {
   const form = useForm<z.infer<typeof loginSchema>>({
@@ -26,14 +27,12 @@ const FormLogin = () => {
     },
   });
 
-  function onSubmit(values: z.infer<typeof loginSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values)
+  async function onSubmit(values: z.infer<typeof loginSchema>) {
+    await loginAction(values);
   }
 
   return (
-    <div>
+    <div className="max-w-52">
       <h1>Login</h1>
       <Form {...form} >
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">

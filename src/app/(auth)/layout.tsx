@@ -4,7 +4,9 @@ const AuthLayout = ({
     children: React.ReactNode;
   }>) => {
   return (
-    <div>{children}</div>
+    <div className="grid place-items-center min-h-screen">
+      {children}
+    </div>
   )
 }
 
